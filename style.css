@@ -1,0 +1,601 @@
+/* ==========================================================================
+   박희주 포트폴리오 스타일시트
+   - 색상 규칙: 배경 1개(#fbfbfc), 글자 2개(#18181b, #71717a), 강조 1개(#2563eb)
+   - 서체 규칙: 2종 이내(시스템 산세리프 및 Pretendard 스택), 본문 16px 이상, 줄간격 1.7 이상
+   - 시각 규칙: 통일된 여백과 제목 크기, 플랫하고 절제된 레이아웃 (그라디언트/글로우/네온/이모지 없음)
+   ========================================================================== */
+
+:root {
+  --color-bg: #fbfbfc;
+  --color-text-primary: #18181b;
+  --color-text-secondary: #71717a;
+  --color-accent: #2563eb;
+  
+  --font-family-base: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.75;
+  
+  --section-max-width: 980px;
+  --section-padding-y: 64px;
+  --section-padding-x: 24px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   사이트 헤더 및 네비게이션
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-text-secondary);
+}
+
+.header-inner {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  padding: 20px var(--section-padding-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--color-text-primary);
+}
+
+.nav-link.active {
+  color: var(--color-accent);
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+/* --------------------------------------------------------------------------
+   메인 콘텐츠 공통 레이아웃
+   -------------------------------------------------------------------------- */
+.site-main {
+  width: 100%;
+}
+
+.portfolio-section {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-container {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  padding-left: var(--section-padding-x);
+  padding-right: var(--section-padding-x);
+}
+
+.section-title {
+  font-size: 32px;
+  line-height: var(--line-height-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 28px;
+}
+
+.section-divider {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-padding-x);
+  height: 1px;
+  background-color: var(--color-text-secondary);
+  opacity: 0.25;
+}
+
+/* --------------------------------------------------------------------------
+   1. Profile 섹션
+   -------------------------------------------------------------------------- */
+.profile-content,
+.home-content {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-text-secondary);
+  padding: 32px;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: baseline;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-text-secondary);
+}
+
+.contact-row:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.contact-row dt {
+  width: 100px;
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.contact-row dd {
+  font-size: 18px;
+  line-height: var(--line-height-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   2. Works 섹션 & 슬라이더
+   -------------------------------------------------------------------------- */
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-header-row .section-title {
+  margin-bottom: 0;
+}
+
+.slider-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slide-counter {
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+  margin-right: 8px;
+}
+
+.btn-control {
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  padding: 8px 16px;
+  border: 1px solid var(--color-text-secondary);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  transition: all 0.2s ease;
+}
+
+.btn-control:hover,
+.btn-control:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.works-guide {
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+
+/* 슬라이더 트랙 */
+.slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-text-secondary);
+  background-color: var(--color-bg);
+}
+
+.slider-track {
+  display: flex;
+  width: 200%;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.slide-item {
+  width: 50%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-header {
+  margin-bottom: 20px;
+}
+
+.work-number {
+  display: inline-block;
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.work-title {
+  font-size: 24px;
+  line-height: var(--line-height-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.work-view-trigger {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--color-text-secondary);
+  background-color: var(--color-bg);
+  padding: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.work-view-trigger:hover,
+.work-view-trigger:focus-visible {
+  border-color: var(--color-accent);
+}
+
+.work-image-wrap {
+  width: 100%;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.work-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.work-view-trigger:hover .work-image {
+  transform: scale(1.02);
+}
+
+.trigger-label {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* 슬라이드 인디케이터 점 */
+.slide-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.indicator-dot {
+  width: 36px;
+  height: 4px;
+  background-color: var(--color-text-secondary);
+  opacity: 0.3;
+  transition: all 0.25s ease;
+}
+
+.indicator-dot.active {
+  background-color: var(--color-accent);
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   전체 화면 영상형 모션 모달 (Cinematic Fullscreen Modal)
+   -------------------------------------------------------------------------- */
+.motion-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.motion-modal.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-topbar {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background-color: var(--color-bg);
+  z-index: 10;
+}
+
+.modal-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-label {
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.modal-title {
+  font-size: 20px;
+  line-height: var(--line-height-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-modal {
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  padding: 8px 16px;
+  border: 1px solid var(--color-text-secondary);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  transition: all 0.2s ease;
+}
+
+.btn-modal:hover,
+.btn-modal:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-modal.btn-close {
+  border-color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+.btn-modal.btn-close:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+/* 모달 스테이지 & 모션 뷰포트 */
+.modal-stage {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+}
+
+.motion-viewport {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.motion-image {
+  max-width: none;
+  max-height: none;
+  will-change: transform;
+}
+
+/* 작품 1: 세로형 3D 모델링 - 전체 화면에서 잘림 없이 크게 감상 및 잔잔한 모션 */
+.motion-viewport.motion-vertical .motion-image {
+  max-height: 88vh;
+  max-width: 90vw;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  animation: cinematicFloat 10s ease-in-out infinite alternate;
+}
+
+@keyframes cinematicFloat {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.025) translateY(-8px);
+  }
+  100% {
+    transform: scale(1.01) translateY(4px);
+  }
+}
+
+/* 눈내리는 캔버스 오버레이 (3D 모델링 감상 시 활성화) */
+.snow-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  display: none;
+}
+
+.snow-canvas.active {
+  display: block;
+}
+
+/* 작품 2: 가로형 UX 디자인 영상 모션 (좌측에서 우측으로 5개 화면을 천천히 훑어보는 트래킹 샷) */
+.motion-viewport.motion-horizontal .motion-image {
+  width: auto;
+  height: 85vh;
+  animation: cinematicPanAcross 22s ease-in-out infinite alternate;
+}
+
+@keyframes cinematicPanAcross {
+  0% {
+    transform: translateX(35%) scale(1);
+  }
+  50% {
+    transform: translateX(0%) scale(1.04);
+  }
+  100% {
+    transform: translateX(-35%) scale(1);
+  }
+}
+
+/* 모션 일시정지 상태 */
+.motion-viewport.paused .motion-image {
+  animation-play-state: paused !important;
+}
+
+.modal-footer {
+  padding: 12px 24px;
+  border-top: 1px solid var(--color-text-secondary);
+  background-color: var(--color-bg);
+  text-align: center;
+  z-index: 10;
+}
+
+.modal-hint {
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   반응형 미디어 쿼리
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  :root {
+    --section-padding-y: 48px;
+    --section-padding-x: 16px;
+  }
+
+  .header-inner {
+    padding: 16px var(--section-padding-x);
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .home-content,
+  .slide-item {
+    padding: 20px;
+  }
+
+  .contact-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .contact-row dt {
+    width: auto;
+  }
+
+  .section-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .work-image-wrap {
+    height: 320px;
+  }
+
+  .modal-topbar {
+    padding: 12px 16px;
+  }
+
+  .modal-actions {
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .btn-modal {
+    padding: 6px 12px;
+  }
+
+  .motion-viewport.motion-vertical .motion-image {
+    max-height: 80vh;
+    max-width: 95vw;
+  }
+
+  .motion-viewport.motion-horizontal .motion-image {
+    height: 70vh;
+  }
+}

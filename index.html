@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>박희주 포트폴리오</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 네비게이션 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#profile" class="brand-name">박희주</a>
+      <nav class="site-nav" aria-label="메인 메뉴">
+        <ul class="nav-list">
+          <li><a href="#profile" class="nav-link active" data-target="profile">Profile</a></li>
+          <li><a href="#works" class="nav-link" data-target="works">Works</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <!-- 1. Profile 섹션 -->
+    <section id="profile" class="portfolio-section">
+      <div class="section-container">
+        <h1 class="section-title">Profile</h1>
+        <div class="profile-content">
+          <dl class="contact-list">
+            <div class="contact-row">
+              <dt>이름</dt>
+              <dd>박희주</dd>
+            </div>
+            <div class="contact-row">
+              <dt>연락처</dt>
+              <dd>010-5786-0155</dd>
+            </div>
+            <div class="contact-row">
+              <dt>이메일</dt>
+              <dd>heeeejup@gmail.com</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- 2. Works 섹션 -->
+    <section id="works" class="portfolio-section">
+      <div class="section-container">
+        <div class="section-header-row">
+          <h2 class="section-title">Works</h2>
+          <div class="slider-controls">
+            <span class="slide-counter" id="slideCounter" aria-live="polite">01 / 02</span>
+            <button type="button" class="btn-control" id="prevBtn" aria-label="이전 작품">이전</button>
+            <button type="button" class="btn-control" id="nextBtn" aria-label="다음 작품">다음</button>
+          </div>
+        </div>
+
+        <p class="works-guide">작품을 누르면 전체 화면으로 전환되어 영상처럼 움직이는 모션으로 감상할 수 있습니다.</p>
+
+        <!-- 슬라이더 영역 -->
+        <div class="slider-container" id="sliderContainer">
+          <div class="slider-track" id="sliderTrack">
+            <!-- 작품 1: 3D 모델링 -->
+            <article class="slide-item active" data-index="0" data-motion="vertical" data-title="3D 모델링" data-src="model-3d.png">
+              <div class="work-header">
+                <span class="work-number">작품 01</span>
+                <h3 class="work-title">3D 모델링</h3>
+              </div>
+              <button type="button" class="work-view-trigger" aria-label="3D 모델링 작품 전체 화면으로 보기">
+                <div class="work-image-wrap">
+                  <img src="model-3d.png" alt="3D 모델링 작품" class="work-image" loading="eager">
+                </div>
+                <span class="trigger-label">전체 화면으로 감상하기</span>
+              </button>
+            </article>
+
+            <!-- 작품 2: UX 디자인 -->
+            <article class="slide-item" data-index="1" data-motion="horizontal" data-title="UX 디자인" data-src="ux-design.png">
+              <div class="work-header">
+                <span class="work-number">작품 02</span>
+                <h3 class="work-title">UX 디자인</h3>
+              </div>
+              <button type="button" class="work-view-trigger" aria-label="UX 디자인 작품 전체 화면으로 보기">
+                <div class="work-image-wrap">
+                  <img src="ux-design.png" alt="UX 디자인 작품" class="work-image" loading="lazy">
+                </div>
+                <span class="trigger-label">전체 화면으로 감상하기</span>
+              </button>
+            </article>
+          </div>
+        </div>
+
+        <!-- 슬라이드 인디케이터 바 -->
+        <div class="slide-indicators" id="slideIndicators" role="tablist" aria-label="작품 슬라이드 선택">
+          <button type="button" role="tab" class="indicator-dot active" data-slide="0" aria-label="1번 작품 선택" aria-selected="true"></button>
+          <button type="button" role="tab" class="indicator-dot" data-slide="1" aria-label="2번 작품 선택" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 전체 화면 영상형 모션 뷰어 모달 -->
+  <div class="motion-modal" id="motionModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-topbar">
+      <div class="modal-meta">
+        <span class="modal-label">전체 화면 감상</span>
+        <h2 class="modal-title" id="modalTitle">작품 제목</h2>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-modal" id="modalToggleMotion" aria-label="모션 일시정지 또는 재생">일시정지</button>
+        <button type="button" class="btn-modal" id="modalPrev" aria-label="이전 작품 보기">이전 작품</button>
+        <button type="button" class="btn-modal" id="modalNext" aria-label="다음 작품 보기">다음 작품</button>
+        <button type="button" class="btn-modal btn-close" id="modalClose" aria-label="전체 화면 닫기">닫기</button>
+      </div>
+    </div>
+
+    <!-- 영상형 모션 뷰포트 -->
+    <div class="modal-stage" id="modalStage">
+      <div class="motion-viewport" id="motionViewport">
+        <img src="" alt="" id="modalImage" class="motion-image">
+      </div>
+      <!-- 3D 모델링 전용 눈내리는 캔버스 -->
+      <canvas id="snowCanvas" class="snow-canvas" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="modal-footer">
+      <p class="modal-hint">ESC 키를 누르면 이전 화면으로 돌아갑니다.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
